@@ -13,7 +13,7 @@
 app: date.o app.o client.o
 	g++ -o date.o app.o client.o
 
-date.o:	Date.cpp	Date.h
+date.o:	Date.cpp Date.h
 	g++ -c Date.cpp
 
 app.o:	app.cpp
