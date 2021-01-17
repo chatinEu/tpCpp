@@ -66,3 +66,14 @@ Chambre Hôtel::getchambre(int num)
 		}
 	}
 }
+
+vector<Chambre> Hôtel::getchambretype(Chambre::_types type)
+{
+	vector<Chambre> tri;
+	for (int i = 0; i < _liste.size(); i++)
+	{
+		if (_liste.at(i).gettype() == type)
+			tri.push_back(_liste.at(i));
+	}
+	return tri; 
+}

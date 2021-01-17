@@ -12,8 +12,8 @@ public:
 	Date(int month, int day, int year);
 	Date() = default;
 	~Date();
-	int getMonth() const;
-	int getDay() const;
+	int getMonth();
+	int getDay();
 	int getYear();
 	bool checkDate(int month, int day) const;
 	Date nextDay();

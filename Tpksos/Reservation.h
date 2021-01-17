@@ -6,7 +6,7 @@
 class Reservation
 {
 public :
-	Reservation(int id, Date& debut, Date& fin, Hôtel& hotel, Client& client, int nb_chambre);
+	Reservation(int id, Date debut, Date fin, Hôtel hotel, Client client, int nb_chambre);
 	int getid();
 	Date getdebut();
 	Date getfin();
@@ -18,6 +18,7 @@ public :
 	void setnb_chambre(int nb_chambre);
     float total();
 	float total(float remise);
+	string tostring();
 	
 
 
@@ -26,12 +27,10 @@ public :
 
 private :
 	int _id;
-	Date& _debut;
-	Date& _fin;
-	Hôtel& _hotel;
-	Client& _client;
+	Date _debut;
+	Date _fin;
+	Hôtel _hotel;
+	Client _client;
 	int _nb_chambre;
-
-	
 };
 

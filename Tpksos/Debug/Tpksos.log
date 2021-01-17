@@ -1,2 +1,18 @@
-﻿  Source.cpp
-  Tpksos.vcxproj -> C:\Users\Clément\source\repos\Tpksos\Debug\Tpksos.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: Le répertoire intermédiaire (Debug\) contient des fichiers partagés provenant d'un autre projet (Tpksos.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
+  Source.cpp
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(113,26): warning C4018: '<=' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(132,21): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(156,28): warning C4018: '<=' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(172,22): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(195,21): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(198,22): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(270,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(280,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(289,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(305,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(316,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(325,26): warning C4018: '>=' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(410,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(184): warning C4715: 'choisirClient' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Users\Clément\source\repos\Tpksos\Tpksos\Source.cpp(182): warning C4172: retourne l'adresse d'une variable locale ou : c temporaire
+  Tpksos.vcxproj -> C:\Users\Clément\source\repos\Tpksos\Debug\Tp1.exe

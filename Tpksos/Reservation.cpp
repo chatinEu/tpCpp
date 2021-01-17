@@ -1,6 +1,6 @@
 #include "Reservation.h"
 
-Reservation::Reservation(int id, Date& debut, Date& fin, Hôtel& hotel, Client& client, int nb_chambre) :
+Reservation::Reservation(int id, Date debut, Date fin, Hôtel hotel, Client client, int nb_chambre) :
 	_id(id), _debut(debut), _fin(fin), _hotel(hotel), _client(client), _nb_chambre(nb_chambre)
 {
 }
@@ -71,4 +71,9 @@ float Reservation::total(float remise)
 		return ((_fin - _debut) * _hotel.getchambre(_nb_chambre).getprix() * (1 - remise));
 	}
 	return 0.0f;
+}
+
+string Reservation::tostring()
+{
+	return "Reservation ref " + to_string(getid()) + " du " + getdebut().toString() + " au " + getfin().toString() + " pour " + getclient().tostring();
 }

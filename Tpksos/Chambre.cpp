@@ -24,7 +24,7 @@ string Chambre::tostring()
 
 Chambre::_types Chambre::gettype()
 {
-	return _types();
+	return _type;
 }
 
 void Chambre::setid(int id)

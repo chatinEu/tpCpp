@@ -16,6 +16,7 @@ public :
 	string tostring();
 	bool chambre_existe(int num);
 	Chambre getchambre(int num);
+	vector <Chambre> getchambretype(Chambre::_types type);
 
 private :
 	int _id;

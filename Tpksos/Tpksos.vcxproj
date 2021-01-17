@@ -24,6 +24,7 @@
     <ProjectGuid>{41941971-5a0e-429b-847b-9adfa90bd36b}</ProjectGuid>
     <RootNamespace>Tpksos</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Tp1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

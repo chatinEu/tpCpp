@@ -34,6 +34,7 @@ bool Date::operator>(Date date)
 	return true;
 }
 
+
 bool Date::operator<(Date date)
 {
 	if (_year > date.getYear())
@@ -53,20 +54,20 @@ int Date::operator-(Date date)
 Date::Date(int month, int day, int year)
 {
 	bool status = checkDate(month, day);
-	assert(status == true && "Date is not valid");
+	
 	_year = year;
 	_month = month;
 	_day = day;
 }
 
 Date::~Date() {
-	std::cout << "  Destructor: " << _month << "/" << _day << '\n';
+	//std::cout << "  Destructor: " << _month << "/" << _day << '\n';
 }
-int Date::getMonth() const {
+int Date::getMonth() {
 	return _month;
 }
 
-int Date::getDay() const {
+int Date::getDay() {
 	return _day;
 }
 int Date::getYear()
@@ -82,10 +83,11 @@ void Date::setYear(int year)
 	_year = year;
 }
 std::string Date::toString() {
-	std::string month[12] = { "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
+	/*std::string month[12] = { "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
 	std::string to_display;
 	to_display = month[_month - 1] + "/" + std::to_string(_day);
-	return to_display;
+	return to_display;*/
+	return std::to_string(getDay()) + "/" + std::to_string(getMonth()) + "/" + std::to_string(getYear());
 }
 
 void Date::setMonth(int month) {
