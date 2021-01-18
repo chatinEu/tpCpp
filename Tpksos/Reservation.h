@@ -1,16 +1,16 @@
 #pragma once
 #include "Date.h"
 #include "Chambre.h"
-#include "Hôtel.h"
+#include "Hotel.h"
 #include "Client.h"
 class Reservation
 {
 public :
-	Reservation(int id, Date debut, Date fin, Hôtel hotel, Client client, int nb_chambre);
+	Reservation(int id, Date debut, Date fin, Hotel hotel, Client client, int nb_chambre);
 	int getid();
 	Date getdebut();
 	Date getfin();
-	Hôtel gethotel();
+	Hotel gethotel();
 	Client getclient();
 	int getnb_chambre();
 	void setdebut(Date debut);
@@ -29,7 +29,7 @@ private :
 	int _id;
 	Date _debut;
 	Date _fin;
-	Hôtel _hotel;
+	Hotel _hotel;
 	Client _client;
 	int _nb_chambre;
 };

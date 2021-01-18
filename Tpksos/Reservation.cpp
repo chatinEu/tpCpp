@@ -1,6 +1,6 @@
 #include "Reservation.h"
 
-Reservation::Reservation(int id, Date debut, Date fin, Hôtel hotel, Client client, int nb_chambre) :
+Reservation::Reservation(int id, Date debut, Date fin, Hotel hotel, Client client, int nb_chambre) :
 	_id(id), _debut(debut), _fin(fin), _hotel(hotel), _client(client), _nb_chambre(nb_chambre)
 {
 }
@@ -22,7 +22,7 @@ Date Reservation::getfin()
 	return _fin;
 }
 
-Hôtel Reservation::gethotel()
+Hotel Reservation::gethotel()
 {
 	return _hotel;
 }

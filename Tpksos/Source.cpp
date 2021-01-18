@@ -1,6 +1,6 @@
 #include "Client.h"
 #include "Chambre.h"
-#include "Hôtel.h"
+#include "Hotel.h"
 #include "Reservation.h"
 #include <iostream>
 #include <string>
@@ -21,7 +21,7 @@ ostream& operator<<(ostream& ss, Chambre& c)
 	return ss;
 }
 
-ostream& operator<<(ostream& ss, Hôtel& c)
+ostream& operator<<(ostream& ss, Hotel& c)
 {
 	ss << c.tostring();
 	return ss;
@@ -47,7 +47,7 @@ Date entree_date(string msg)
 	cin >> jour;
 	cout << "\t- Mois : ";
 	cin >> mois;
-	cout << "\t- Année : ";
+	cout << "\t- Annï¿½e : ";
 	cin >> annee;
 	Date date(mois, jour, annee);
 	if (date.checkDate(mois, jour))
@@ -103,7 +103,7 @@ int menu()
 	};
 
 	cout << endl << endl << endl << endl;
-	cout << "Gestion de réservation :" << endl;
+	cout << "Gestion de rï¿½servation :" << endl;
 	for (unsigned int i = 0; i < options.size(); i++)
 		cout << "\t" << i + 1 << "- " << options.at(i) << endl;
 	cout << "\t0- Quitter" << endl;
@@ -165,7 +165,7 @@ Client &choisirClient(vector <Client> &clients)
 		}
 		else if (choix == 2)
 		{
-			cout << "Entrer le nom à filtrer : ";
+			cout << "Entrer le nom ï¿½ filtrer : ";
 			string nom;
 			cin >> nom;
 			vector<Client> filtre;
@@ -186,7 +186,7 @@ Client &choisirClient(vector <Client> &clients)
 
 
 
-Chambre chambre_dispo(Chambre::_types type_chambre, Hôtel hotel, Date date_debut, Date date_fin, vector <Reservation> reservations)
+Chambre chambre_dispo(Chambre::_types type_chambre, Hotel hotel, Date date_debut, Date date_fin, vector <Reservation> reservations)
 
 {
 	vector <Chambre> chambres = hotel.getchambretype(type_chambre); // recupere les chambres du bon type
@@ -234,7 +234,7 @@ Chambre chambre_dispo(Chambre::_types type_chambre, Hôtel hotel, Date date_debut
 
 
 
-Reservation creer_reservation(int id, Hôtel &hotel, vector <Client> &clients, vector <Reservation> reservations)
+Reservation creer_reservation(int id, Hotel &hotel, vector <Client> &clients, vector <Reservation> reservations)
 {
 	print_space();
 	cout << "*----- Creation de reservation -----*" << endl;
@@ -260,7 +260,7 @@ Reservation creer_reservation(int id, Hôtel &hotel, vector <Client> &clients, ve
 	}
 	else {
 		Reservation resa(id, date_debut, date_fin, hotel, choisirClient(clients), chambre_trouvee.getid());
-		cout << "prix du séjour : "  << resa.total() << endl;
+		cout << "prix du sï¿½jour : "  << resa.total() << endl;
 		return resa;
 	}
 }
@@ -428,7 +428,7 @@ void afficher_resa_a_date(vector<Reservation> reservations)
 
 int main()
 {
-	vector <Client> clients = { Client(1,"Montagnier","Gilbert"), Client(2,"Renene","Timothé") };
+	vector <Client> clients = { Client(1,"Montagnier","Gilbert"), Client(2,"Renene","Timothï¿½") };
 
 	vector <Chambre> Chambres;
 	for (int i = 0; i < 3; i++)
@@ -439,7 +439,7 @@ int main()
 		Chambres.push_back(Chambre(i, Chambre::_types::Suite, 210));
 	vector <Reservation> reservations;
 	
-	Hôtel hotel(1, "bon","Roubaix", Chambres);
+	Hotel hotel(1, "bon","Roubaix", Chambres);
 
 	
 	int id_resa = 0;
