@@ -22,6 +22,7 @@ public:
 	void setDay(int day);
 	std::string toString() const;
 private:
+	bool isBefore(Date d) const;
 	int _month;
 	int _day;
 	int _year;

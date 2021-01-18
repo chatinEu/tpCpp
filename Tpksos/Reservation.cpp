@@ -39,7 +39,7 @@ int Reservation::getnb_chambre() const
 void Reservation::setdebut(Date debut)
 {
 	_debut = debut;
-	if (debut < _fin)
+	if (debut < getfin())
 	{
 		_debut = debut;
 	}
@@ -47,7 +47,7 @@ void Reservation::setdebut(Date debut)
 
 void Reservation::setfin(Date fin)
 {
-	if (fin > _debut) {
+	if (fin > getdebut()) {
 		_fin = fin;
 	}
 }

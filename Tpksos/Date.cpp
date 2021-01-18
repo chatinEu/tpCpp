@@ -19,29 +19,31 @@ bool Date::checkDate(int month, int day) const {
 	return status;
 }
 
-bool Date::operator>(Date date) const{
-	if (getYear() < date.getYear())
-		return false;
-	else if (getMonth() < date.getMonth())
-		return false;
-	else if (getDay() < date.getDay())
-		return false;
-	return true;
-}
 
-
-bool Date::operator<(Date date) const{
+bool Date::isBefore(Date date) const{
 	if (getYear() < date.getYear())
 		return true;
 	else if (getYear() > date.getYear())
 		return false;
 
-	// this year== date year
+	// same year
+	else if (getMonth() < date.getMonth())
+		return true;
 	else if (getMonth() > date.getMonth())
 		return false;
+
+	// same month
 	else if (getDay() > date.getDay())
 		return false;
 	return true;
+}
+
+bool Date::operator>(Date date) const{
+	return !isBefore(date);
+}
+
+bool Date::operator<(Date date) const{
+	return isBefore(date);
 }
 
 int Date::operator-(Date date) const{
