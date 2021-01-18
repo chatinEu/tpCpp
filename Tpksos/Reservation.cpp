@@ -2,37 +2,36 @@
 
 Reservation::Reservation(int id, Date debut, Date fin, Hotel hotel, Client client, int nb_chambre) :
 	_id(id), _debut(debut), _fin(fin), _hotel(hotel), _client(client), _nb_chambre(nb_chambre)
-{
-}
+{}
 
 
 
-int Reservation::getid()
+int Reservation::getid() const
 {
 	return _id;
 }
 
-Date Reservation::getdebut()
+Date Reservation::getdebut() const
 {
 	return _debut;
 }
 
-Date Reservation::getfin()
+Date Reservation::getfin() const
 {
 	return _fin;
 }
 
-Hotel Reservation::gethotel()
+Hotel Reservation::gethotel() const
 {
 	return _hotel;
 }
 
-Client Reservation::getclient()
+Client Reservation::getclient() const
 {
 	return _client;
 }
 
-int Reservation::getnb_chambre()
+int Reservation::getnb_chambre() const
 {
 	return _nb_chambre;
 }
@@ -64,16 +63,16 @@ float Reservation::total()
 	return total(0);
 }
 
-float Reservation::total(float remise)
+float Reservation::total(float remise) const
 {
 	if (remise >= 0 && remise <= 1)
 	{
-		return ((_fin - _debut) * _hotel.getchambre(_nb_chambre).getprix() * (1 - remise));
+		return ((getfin() - getdebut()) * gethotel().getchambre(getnb_chambre()).getprix() * (1 - remise));
 	}
 	return 0.0f;
 }
 
-string Reservation::tostring()
+string Reservation::tostring() const
 {
 	return "Reservation ref " + to_string(getid()) + " du " + getdebut().toString() + " au " + getfin().toString() + " pour " + getclient().tostring();
 }

@@ -5,11 +5,11 @@ class Client
 {
 public:
 	Client(int id, string nom, string prenom);
-	int getid();
-	string getnom();
-	string getprenom();
-	string tostring();
-	int getnb_resa();
+	int getid() const;
+	string getnom() const;
+	string getprenom() const;
+	string tostring() const;
+	int getnb_resa() const;
 
 	void setid(int id);
 	void setnom(string nom);
