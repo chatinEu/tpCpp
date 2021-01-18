@@ -2,37 +2,37 @@
 
 Chambre::Chambre(int id, _types type_chambre, int prix):_id(id),_type(type_chambre),_prix(prix){}
 
-int Chambre::getid() const
+int Chambre::getId() const
 {
 	return _id;
 }
 
-int Chambre::getprix() const
+int Chambre::getPrix() const
 {
 	return _prix;
 }
 
-string Chambre::tostring() const
+string Chambre::toString() const
 {
-	return to_string(getid()) + " " + to_string(getprix()) + " " + to_string(gettype()) ;
+	return to_string(getId()) + " " + to_string(getPrix()) + " " + to_string(getType()) ;
 }
 
-Chambre::_types Chambre::gettype() const
+Chambre::_types Chambre::getType() const
 {
 	return _type;
 }
 
-void Chambre::setid(int id)
+void Chambre::setId(int id)
 {
 	_id = id;
 }
 
-void Chambre::setprix(int prix)
+void Chambre::setPrix(int prix)
 {
 	_prix = prix;
 }
 
-void Chambre::settype(_types type_chambre)
+void Chambre::setType(_types type_chambre)
 {
 	_type = type_chambre;
 }

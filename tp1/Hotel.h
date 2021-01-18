@@ -8,15 +8,15 @@ class Hotel
 {
 public :
 	Hotel(int id, string nom, string ville, vector <Chambre> liste);
-	int getid() const;
-	string getnom() const;
-	string getville() const;
-	vector <Chambre> getliste() const;
+	int getId() const;
+	string getNom() const;
+	string getVille() const;
+	vector <Chambre> getListe() const;
 	void addChambre(Chambre chambre);
-	string tostring() const;
+	string toString() const;
 	bool chambre_existe(int num) const;
-	Chambre getchambre(int num) const;
-	vector <Chambre> getchambretype(Chambre::_types type) const;
+	Chambre getChambre(int num) const;
+	vector <Chambre> getChambreType(Chambre::_types type) const;
 
 private :
 	int _id;

@@ -1,5 +1,4 @@
-
-#include "date.h"
+#include "Date.h"
 #include <iostream>
 #include <cassert>
 
@@ -56,7 +55,7 @@ Date::Date(int month, int day, int year):_day(day),_month(month),_year(year){
 
 Date::~Date() {
 	//this is a destructor
-	//std::cout << "  Destructor: " << _month << "/" << _day << '\n';
+	std::cout << "  Destructor: " << _month << "/" << _day << '\n';
 }
 int Date::getMonth() const{
 	return _month;

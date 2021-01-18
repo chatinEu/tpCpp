@@ -6,53 +6,53 @@ Reservation::Reservation(int id, Date debut, Date fin, Hotel hotel, Client clien
 
 
 
-int Reservation::getid() const
+int Reservation::getId() const
 {
 	return _id;
 }
 
-Date Reservation::getdebut() const
+Date Reservation::getDebut() const
 {
 	return _debut;
 }
 
-Date Reservation::getfin() const
+Date Reservation::getFin() const
 {
 	return _fin;
 }
 
-Hotel Reservation::gethotel() const
+Hotel Reservation::getHotel() const
 {
 	return _hotel;
 }
 
-Client Reservation::getclient() const
+Client Reservation::getClient() const
 {
 	return _client;
 }
 
-int Reservation::getnb_chambre() const
+int Reservation::getNb_chambre() const
 {
 	return _nb_chambre;
 }
 
-void Reservation::setdebut(Date debut)
+void Reservation::setDebut(Date debut)
 {
 	_debut = debut;
-	if (debut < getfin())
+	if (debut < getFin())
 	{
 		_debut = debut;
 	}
 }
 
-void Reservation::setfin(Date fin)
+void Reservation::setFin(Date fin)
 {
-	if (fin > getdebut()) {
+	if (fin > getDebut()) {
 		_fin = fin;
 	}
 }
 
-void Reservation::setnb_chambre(int nb_chambre)
+void Reservation::setNb_chambre(int nb_chambre)
 {
 	if (_hotel.chambre_existe(nb_chambre))
 		_nb_chambre = nb_chambre;
@@ -67,12 +67,12 @@ float Reservation::total(float remise) const
 {
 	if (remise >= 0 && remise <= 1)
 	{
-		return ((getfin() - getdebut()) * gethotel().getchambre(getnb_chambre()).getprix() * (1 - remise));
+		return ((getFin() - getDebut()) * getHotel().getChambre(getNb_chambre()).getPrix() * (1 - remise));
 	}
 	return 0.0f;
 }
 
-string Reservation::tostring() const
+string Reservation::toString() const
 {
-	return "Reservation ref " + to_string(getid()) + " du " + getdebut().toString() + " au " + getfin().toString() + " pour " + getclient().tostring();
+	return "Reservation ref " + to_string(getId()) + " du " + getDebut().toString() + " au " + getFin().toString() + " pour " + getClient().toString();
 }

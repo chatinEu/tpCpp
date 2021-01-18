@@ -1,7 +1,8 @@
-#include "Client.h"
-#include "Chambre.h"
+
 #include "Hotel.h"
 #include "Reservation.h"
+#include "Client.h"
+#include "Chambre.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -17,23 +18,23 @@ void print_space()
 
 ostream& operator<<(ostream& ss, Chambre& c)
 {
-	ss << c.tostring();
+	ss << c.toString();
 	return ss;
 }
 
 ostream& operator<<(ostream& ss, Hotel& c)
 {
-	ss << c.tostring();
+	ss << c.toString();
 	return ss;
 }
 ostream& operator<<(ostream& ss, Client& c)
 {
-	ss << c.tostring();
+	ss << c.toString();
 	return ss;
 }
 ostream& operator<<(ostream& ss, Reservation& c)
 {
-	ss << c.tostring();
+	ss << c.toString();
 	return ss;
 }
 
@@ -170,7 +171,7 @@ Client &choisirClient(vector <Client> &clients)
 			cin >> nom;
 			vector<Client> filtre;
 			for (int i = 0; i < clients.size(); i++)
-				if (clients.at(i).getnom().find(nom) != string::npos || clients.at(i).getprenom().find(nom) != string::npos)
+				if (clients.at(i).getNom().find(nom) != string::npos || clients.at(i).getPrenom().find(nom) != string::npos)
 					filtre.push_back(clients.at(i));
 			return choisirClient(filtre);
 		}
@@ -189,7 +190,7 @@ Client &choisirClient(vector <Client> &clients)
 Chambre chambre_dispo(Chambre::_types type_chambre, Hotel hotel, Date date_debut, Date date_fin, vector <Reservation> reservations)
 
 {
-	vector <Chambre> chambres = hotel.getchambretype(type_chambre); // recupere les chambres du bon type
+	vector <Chambre> chambres = hotel.getChambreType(type_chambre); // recupere les chambres du bon type
 	if (reservations.size() > 0)
 	{
 		for (int i = 0; i < chambres.size(); i++)
@@ -197,9 +198,9 @@ Chambre chambre_dispo(Chambre::_types type_chambre, Hotel hotel, Date date_debut
 			bool dispo = true;
 			for (int j = 0; j < reservations.size(); j++)
 			{
-				if (reservations.at(j).getnb_chambre() == chambres.at(i).getid())
+				if (reservations.at(j).getNb_chambre() == chambres.at(i).getId())
 				{
-					if (!(date_debut < reservations.at(j).getfin()) && !(date_fin > reservations.at(j).getdebut()))
+					if (!(date_debut < reservations.at(j).getFin()) && !(date_fin > reservations.at(j).getDebut()))
 					{
 						// chambre dispo
 					}
@@ -253,13 +254,13 @@ Reservation creer_reservation(int id, Hotel &hotel, vector <Client> &clients, ve
 	Chambre::_types type_chambre = entree_type();
 	// cici on a une chambre de l'hotel
 	Chambre chambre_trouvee = chambre_dispo(type_chambre, hotel, date_debut, date_fin, reservations);
-	if (chambre_trouvee.getid() == -1) // pas de chambre dispo
+	if (chambre_trouvee.getId() == -1) // pas de chambre dispo
 	{
 		cout << "Pas de chambre disponible" << endl;
 		return Reservation(-1, date_debut, date_fin, hotel, clients.at(0), 0); // resa invalide
 	}
 	else {
-		Reservation resa(id, date_debut, date_fin, hotel, choisirClient(clients), chambre_trouvee.getid());
+		Reservation resa(id, date_debut, date_fin, hotel, choisirClient(clients), chambre_trouvee.getId());
 		cout << "prix du s�jour : "  << resa.total() << endl;
 		return resa;
 	}
@@ -279,7 +280,7 @@ void afficher_resa_spec(vector<Reservation> reservations)
 	print_space();
 	for (int i = 0; i < reservations.size(); i++)
 	{
-		cout << "\tReservation ref " << reservations.at(i).getid();
+		cout << "\tReservation ref " << reservations.at(i).getId();
 		if (i % 2 == 1)
 			cout << endl;
 	}
@@ -288,7 +289,7 @@ void afficher_resa_spec(vector<Reservation> reservations)
 	cin >> id;
 	for (int i = 0; i < reservations.size(); i++)
 	{
-		if (reservations.at(i).getid() == id)
+		if (reservations.at(i).getId() == id)
 		{
 			cout << reservations.at(i) << endl;
 			return;
@@ -304,7 +305,7 @@ void afficher_resa_client(vector<Reservation> reservations, vector<Client> clien
 	Client c = choisirClient(clients);
 	for (int i = 0; i < reservations.size(); i++)
 	{
-		if (reservations.at(i).getclient().getid() == c.getid())
+		if (reservations.at(i).getClient().getId() == c.getId())
 			cout << reservations.at(i) << endl;
 	}
 }
@@ -341,7 +342,7 @@ vector<Reservation> modifier_resa(vector<Reservation> reservations)
 	int choix = -1;
 	while (choix == -1)
 	{
-		cout << endl << endl << "*---- Modifier la reservation ref " << resa.getid() << " ----*" << endl;
+		cout << endl << endl << "*---- Modifier la reservation ref " << resa.getId() << " ----*" << endl;
 		cout << "\t0- Changer date debut" << endl
 			<< "\t1- Changer date fin" << endl
 			<< "\t2- Changer chambre" << endl
@@ -358,14 +359,14 @@ vector<Reservation> modifier_resa(vector<Reservation> reservations)
 			switch (choix)
 			{
 			case 0:
-				resa.setdebut(entree_date("debut"));
+				resa.setDebut(entree_date("debut"));
 				break;
 			case 1:
-				resa.setfin(entree_date("fin"));
+				resa.setFin(entree_date("fin"));
 				break;
 			case 2:
-				Chambre chambre_trouvee = chambre_dispo(resa.gethotel().getchambre(resa.getnb_chambre()).gettype(), resa.gethotel(), resa.getdebut(), resa.getfin(), reservations);
-				resa.setnb_chambre(chambre_trouvee.getid());
+				Chambre chambre_trouvee = chambre_dispo(resa.getHotel().getChambre(resa.getNb_chambre()).getType(), resa.getHotel(), resa.getDebut(), resa.getFin(), reservations);
+				resa.setNb_chambre(chambre_trouvee.getId());
 				break;
 			}
 			if(choix != 3)
@@ -382,7 +383,7 @@ vector<Reservation> annuler_reservation(vector<Reservation> reservations)
 {
 	print_space();
 	int resa_num = choisirReservationNum(reservations);
-	cout << "Voulez-vous vraiment supprimer la reservation " << reservations.at(resa_num).getid() << " ? [y/n] : ";
+	cout << "Voulez-vous vraiment supprimer la reservation " << reservations.at(resa_num).getId() << " ? [y/n] : ";
 	string choix = "";
 	while (choix == "")
 	{
@@ -409,7 +410,7 @@ void afficher_resa_a_date(vector<Reservation> reservations)
 	cout << "*---- Reservations a cette date ----*" << endl;
 	for (int i = 0; i < reservations.size(); i++)
 	{
-		if (reservations.at(i).getdebut() < date && reservations.at(i).getfin() > date)
+		if (reservations.at(i).getDebut() < date && reservations.at(i).getFin() > date)
 		{
 			cout << reservations.at(i) << endl;
 		}
@@ -456,7 +457,7 @@ int main()
 		case 1:
 			{
 				Reservation resa = creer_reservation(id_resa++, hotel, clients, reservations);
-				if (resa.getid() != -1)
+				if (resa.getId() != -1)
 					reservations.push_back(resa);
 			}
 			break;

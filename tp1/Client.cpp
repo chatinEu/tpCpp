@@ -3,47 +3,47 @@
 
 Client::Client(int id, string nom, string prenom):_id(id),_nom(nom),_prenom(prenom),_nb_resa(0){}
 
-int Client::getid() const
+int Client::getId() const
 {
 	return _id;
 }
 
-string Client::getnom() const
+string Client::getNom() const
 {
 	return _nom;
 }
 
-string Client::getprenom() const
+string Client::getPrenom() const
 {
 	return _prenom;
 }
 
-void Client::setid(int id) 
+void Client::setId(int id) 
 {
 	_id = id;
 }
 
-void Client::setnom(string nom)
+void Client::setNom(string nom)
 {
 	_nom = nom;
 }
 
-void Client::setprenom(string prenom)
+void Client::setPrenom(string prenom)
 {
 	_prenom = prenom;
 }
 
-void Client::setnb_resa(int nb_resa)
+void Client::setNb_resa(int nb_resa)
 {
 	_nb_resa = nb_resa;
 }
 
-string Client::tostring() const
+string Client::toString() const
 {
-	return getnom() + " " + getprenom() + " " + to_string(getid()) + " " + to_string(getnb_resa());
+	return getNom() + " " + getPrenom() + " " + to_string(getId()) + " " + to_string(getNb_resa());
 }
 
-int Client::getnb_resa() const
+int Client::getNb_resa() const
 {
 	return _nb_resa;
 }

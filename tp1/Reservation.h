@@ -7,18 +7,18 @@ class Reservation
 {
 public :
 	Reservation(int id, Date debut, Date fin, Hotel hotel, Client client, int nb_chambre);
-	int getid() const;
-	Date getdebut() const;
-	Date getfin() const;
-	Hotel gethotel() const;
-	Client getclient() const;
-	int getnb_chambre() const;
-	void setdebut(Date debut);
-	void setfin(Date fin);
-	void setnb_chambre(int nb_chambre);
+	int getId() const;
+	Date getDebut() const;
+	Date getFin() const;
+	Hotel getHotel() const;
+	Client getClient() const;
+	int getNb_chambre() const;
+	void setDebut(Date debut);
+	void setFin(Date fin);
+	void setNb_chambre(int nb_chambre);
     float total();
 	float total(float remise) const;
-	string tostring() const;
+	string toString() const;
 	
 
 

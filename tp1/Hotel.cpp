@@ -2,21 +2,21 @@
 
 Hotel::Hotel(int id, string nom, string ville, vector<Chambre> liste):_id(id),_nom(nom),_ville(ville),_liste(liste){}
 
-int Hotel::getid() const{
+int Hotel::getId() const{
 	return _id;
 }
 
-string Hotel::getnom() const
+string Hotel::getNom() const
 {
 	return _nom;
 }
 
-string Hotel::getville() const
+string Hotel::getVille() const
 {
 	return _ville;
 }
 
-vector <Chambre> Hotel::getliste() const
+vector <Chambre> Hotel::getListe() const
 {
 	return _liste;
 }
@@ -26,11 +26,11 @@ void Hotel::addChambre(Chambre chambre)
 	_liste.push_back(chambre);
 }
 
-string Hotel::tostring() const{
-	string temp = to_string(getid()) + " " + getnom() + " " + getville() + " ";
-	for (int i = 0; i < getliste().size(); i++)
+string Hotel::toString() const{
+	string temp = to_string(getId()) + " " + getNom() + " " + getVille() + " ";
+	for (int i = 0; i < getListe().size(); i++)
 	{
-		temp += "\n\t- " + getchambre(i).tostring();
+		temp += "\n\t- " + getChambre(i).toString();
 	}
 	return temp;
 }
@@ -38,7 +38,7 @@ string Hotel::tostring() const{
 bool Hotel::chambre_existe(int num) const{
 	for (int i = 0; i < _liste.size(); i++)
 	{
-		if (getchambre(i).getid() == num)
+		if (getChambre(i).getId() == num)
 		{
 			return true;
 		}
@@ -46,23 +46,23 @@ bool Hotel::chambre_existe(int num) const{
 	return false;
 }
 
-Chambre Hotel::getchambre(int num) const{
+Chambre Hotel::getChambre(int num) const{
 	for (int i = 0; i < _liste.size(); i++)
 	{
-		if (_liste.at(i).getid() == num)
+		if (_liste.at(i).getId() == num)
 		{
 			return _liste.at(i);
 		}
 	}
 }
 
-vector<Chambre> Hotel::getchambretype(Chambre::_types type) const
+vector<Chambre> Hotel::getChambreType(Chambre::_types type) const
 {
 	vector<Chambre> tri;
 	for (int i = 0; i < _liste.size(); i++)
 	{
-		if (getchambre(i).gettype() == type)
-			tri.push_back(getchambre(i));
+		if (getChambre(i).getType() == type)
+			tri.push_back(getChambre(i));
 	}
 	return tri; 
 }
