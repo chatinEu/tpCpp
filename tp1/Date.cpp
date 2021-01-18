@@ -1,39 +1,95 @@
-#include "Date.h"
+
+#include "date.h"
+#include <iostream>
+#include <cassert>
+
+bool Date::checkDate(int month, int day) const {
+	bool status = true;
+	if ((month < 1) || (month > 12) || (day > 31 || day <1)){
+		status = false;
+	}
+	else if ((month == 4 || month == 6 || month == 9 || month == 11)
+		&& day > 30 ) {
+		status = false;
+	}
+	else if ((month == 2) && day > 28) {
+		status = false;
+	}
+	
+	return status;
+}
 
 
-Date::Date(int day,int month,int year){
-	_jour=day;
-	_mois=month;
-	_annee=year;
+bool Date::isBefore(Date date) const{
+	if (getYear() < date.getYear())
+		return true;
+	else if (getYear() > date.getYear())
+		return false;
+
+	// same year
+	else if (getMonth() < date.getMonth())
+		return true;
+	else if (getMonth() > date.getMonth())
+		return false;
+
+	// same month
+	else if (getDay() > date.getDay())
+		return false;
+	return true;
 }
 
-/**
-*	compare 2 objets date
-*	retourne 0 si meme jour
-*	<0 si objet comparé plus loin en date
-*
-*/
-int Date::compare(Date d) const{
-	int tmp=0;
-	tmp	=	_annee 	- 	d._annee*365;
-	tmp+=	_mois 	- 	d._mois*30;
-	tmp+=	_jour 	- 	d._jour;
-	return tmp;
+bool Date::operator>(Date date) const{
+	return !isBefore(date);
 }
 
-std::string Date::toString(){
-	std::string str=std::to_string( getDay() )+"/"+
-			std::to_string( getMonth())+"/"+
-			std::to_string( getYear());
-	return str;
-}
-int Date::getDay()const{
-	return _jour;
-}
-int Date::getMonth()const{
-	return _mois;
-}
-int Date::getYear()const{
-	return _annee;
+bool Date::operator<(Date date) const{
+	return isBefore(date);
 }
 
+int Date::operator-(Date date) const{
+	return (getYear() * 365 + getMonth() * 30 + getDay()) - (date.getYear() * 365 + date.getMonth() * 30 + date.getDay());
+}
+
+Date::Date(int month, int day, int year):_day(day),_month(month),_year(year){
+	bool status = checkDate(month, day);
+}
+
+Date::~Date() {
+	//this is a destructor
+	//std::cout << "  Destructor: " << _month << "/" << _day << '\n';
+}
+int Date::getMonth() const{
+	return _month;
+}
+
+int Date::getDay() const{
+	return _day;
+}
+int Date::getYear() const{
+	return _year;
+}
+
+Date Date::nextDay() {
+	Date next(_month, _day + 1, _year);
+	return next;
+}
+void Date::setYear(int year){
+	_year = year;
+}
+std::string Date::toString() const{
+	/*std::string month[12] = { "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
+	std::string to_display;
+	to_display = month[_month - 1] + "/" + std::to_string(_day);
+	return to_display;*/
+	return std::to_string(getDay()) + "/" + std::to_string(getMonth()) + "/" + std::to_string(getYear());
+}
+
+void Date::setMonth(int month) {
+	assert((month >= 1) && (month <= 12) && "Month is not valid");
+	_month = month;
+}
+
+void Date::setDay(int day) {
+	assert(checkDate(_month, day) && "Day is not valid");
+	_day = day;
+}

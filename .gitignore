@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# work env
+.vscode
+.vsx
+*Debug*

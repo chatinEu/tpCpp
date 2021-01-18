@@ -1,55 +1,68 @@
 #include "Hotel.h"
 
-int Hotel::_idIterator=1;
-std::vector<Hotel*> Hotel::_listHotel;
+Hotel::Hotel(int id, string nom, string ville, vector<Chambre> liste):_id(id),_nom(nom),_ville(ville),_liste(liste){}
 
-Hotel::Hotel(std::string nom,std::string ville,std::vector<Chambre> chambreList):
-    _id(_idIterator),_nom(nom),_ville(ville),_listChambre(chambreList){
-       _idIterator+=1;
-       _listHotel.push_back(this);
-    }
-Hotel::Hotel():_id(-1){}
-//used for copies
-Hotel::Hotel(int id,std::string nom,std::string ville,std::vector<Chambre> chambreList):
-    _id(id),_nom(nom),_ville(ville),_listChambre(chambreList){}
-
-
-Hotel Hotel::getHotelById(int id){
-  
-    for (auto i : _listHotel)
-    {
-        if (i->_id==id)
-           return *i;
-    } 
-    return Hotel();
+int Hotel::getid() const{
+	return _id;
 }
 
-Chambre Hotel::getChambreById(int id){
-    for (auto &&i : _listChambre)
-    {
-        if(i.getId()==id)
-            return i;
-    }
-    return Chambre();
+string Hotel::getnom() const
+{
+	return _nom;
 }
 
-Hotel Hotel::copy(){
-    Hotel ho(getId(),
-        getNom(),
-        getVille(),
-        getChambreList());
-    return ho;
+string Hotel::getville() const
+{
+	return _ville;
 }
 
-int Hotel::getId() const{
-    return _id;
+vector <Chambre> Hotel::getliste() const
+{
+	return _liste;
 }
-std::string Hotel::getNom() const {
-    return _nom;
+
+void Hotel::addChambre(Chambre chambre)
+{
+	_liste.push_back(chambre);
 }
-std::string Hotel::getVille()const{
-    return _ville;
+
+string Hotel::tostring() const{
+	string temp = to_string(getid()) + " " + getnom() + " " + getville() + " ";
+	for (int i = 0; i < getliste().size(); i++)
+	{
+		temp += "\n\t- " + getchambre(i).tostring();
+	}
+	return temp;
 }
-std::vector<Chambre> Hotel::getChambreList()const{
-    return _listChambre;
+
+bool Hotel::chambre_existe(int num) const{
+	for (int i = 0; i < _liste.size(); i++)
+	{
+		if (getchambre(i).getid() == num)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+Chambre Hotel::getchambre(int num) const{
+	for (int i = 0; i < _liste.size(); i++)
+	{
+		if (_liste.at(i).getid() == num)
+		{
+			return _liste.at(i);
+		}
+	}
+}
+
+vector<Chambre> Hotel::getchambretype(Chambre::_types type) const
+{
+	vector<Chambre> tri;
+	for (int i = 0; i < _liste.size(); i++)
+	{
+		if (getchambre(i).gettype() == type)
+			tri.push_back(getchambre(i));
+	}
+	return tri; 
 }

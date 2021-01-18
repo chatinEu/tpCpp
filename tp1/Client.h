@@ -1,22 +1,32 @@
-
-
-#ifndef CLIENT_H
-#define CLIENT_H
-
+#pragma once
 #include <string>
-class Client{
+using namespace std;
+class Client
+{
 public:
+	Client(int id, string nom, string prenom);
+	int getid() const;
+	string getnom() const;
+	string getprenom() const;
+	string tostring() const;
+	int getnb_resa() const;
 
-	static int 	_idIterator;
-	Client(std::string nom,std::string prenom);
-	Client(std::string nom,std::string prenom,int id);
-	int getId()const;
-private:
-	const int 	_id;
-	std::string _nom;
-	std::string _prenom;
-	int pastReservationNumber;
+	void setid(int id);
+	void setnom(string nom);
+	void setprenom(string prenom);
+	void setnb_resa(int nb_resa);
+
+
+
+
+
+
+private :
+	int _id;
+	string _nom;
+	string _prenom;
+	int _nb_resa;
+
 
 };
 
-#endif

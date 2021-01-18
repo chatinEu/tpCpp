@@ -1,23 +1,28 @@
-#include "vector"
-#include "string"
+#pragma once
+#include <string>
+#include <vector>
 #include "Chambre.h"
-class Hotel{
-    public:
-        static int _idIterator;
-        static std::vector<Hotel*> _listHotel;
-        Hotel(int id,std::string nom,std::string ville,std::vector<Chambre> chambreList);
-        Hotel(std::string nom,std::string ville,std::vector<Chambre> chambreList);
-        Hotel();
-        static Hotel getHotelById(int id);
-        Chambre getChambreById(int id);
-        Hotel copy();
-        
-        int getId()const ;
-        std::string getNom()const;
-        std::string getVille()const;
-        std::vector<Chambre> getChambreList()const;
-    private:
-        const int _id;
-        std::string _nom,_ville;
-        std::vector<Chambre> _listChambre;
+using namespace std;
+
+class Hotel
+{
+public :
+	Hotel(int id, string nom, string ville, vector <Chambre> liste);
+	int getid() const;
+	string getnom() const;
+	string getville() const;
+	vector <Chambre> getliste() const;
+	void addChambre(Chambre chambre);
+	string tostring() const;
+	bool chambre_existe(int num) const;
+	Chambre getchambre(int num) const;
+	vector <Chambre> getchambretype(Chambre::_types type) const;
+
+private :
+	int _id;
+	string _nom;
+	string _ville;
+	vector <Chambre> _liste;
+
 };
+

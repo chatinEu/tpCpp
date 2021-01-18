@@ -1,26 +1,30 @@
-#ifndef CHAMBRE_H
-#define CHAMBRE_H
+#pragma once
+#include <iostream>
+#include <string>
+#include <sstream>	
+using namespace std;
+
+
+class Chambre
+{
+public :
+	enum _types :int { Simple = 1, Double = 2, Suite = 3 };
+	Chambre(int id, _types type_chambre, int prix);
+	int getid() const;
+	int getprix() const;
+	string tostring() const;
+	_types gettype() const;
+	void setid(int id);
+	void setprix(int prix);
+	void settype(_types type_chambre);
 
 
 
 
-enum type {
-    Single,
-    Double,
-    Suite
+
+private :
+	int _id;
+    int _prix;
+	_types _type;
 };
-class Chambre{
-    public:
-        static int _idIterator;
-        Chambre(int id,int prix,type type);
-        Chambre(int prix,type type);
-        Chambre();
-        int getDailyPrice() const;
-        int getId() const;
-    private:
-        int _id;
-        type _type;
-        int _prix;
-};
 
-#endif

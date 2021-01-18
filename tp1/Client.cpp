@@ -1,11 +1,50 @@
 #include "Client.h"
-using namespace std;
-int Client::_idIterator=1;
-Client::Client(string nom,string prenom): _nom(nom),_prenom(prenom),_id(_idIterator){
-    _idIterator+=1;
-}
-Client::Client(string nom,string prenom,int id): _nom(nom),_prenom(prenom),_id(id){}
 
-int Client::getId() const{
-    return _id;
+
+Client::Client(int id, string nom, string prenom):_id(id),_nom(nom),_prenom(prenom),_nb_resa(0){}
+
+int Client::getid() const
+{
+	return _id;
 }
+
+string Client::getnom() const
+{
+	return _nom;
+}
+
+string Client::getprenom() const
+{
+	return _prenom;
+}
+
+void Client::setid(int id) 
+{
+	_id = id;
+}
+
+void Client::setnom(string nom)
+{
+	_nom = nom;
+}
+
+void Client::setprenom(string prenom)
+{
+	_prenom = prenom;
+}
+
+void Client::setnb_resa(int nb_resa)
+{
+	_nb_resa = nb_resa;
+}
+
+string Client::tostring() const
+{
+	return getnom() + " " + getprenom() + " " + to_string(getid()) + " " + to_string(getnb_resa());
+}
+
+int Client::getnb_resa() const
+{
+	return _nb_resa;
+}
+
