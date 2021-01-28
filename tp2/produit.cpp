@@ -3,6 +3,14 @@
 
 int Produit::_idIterator=1;
 
+
+
+ostream& operator<<(ostream &os,const  Produit& p)
+{
+    os<<p.toString()<<endl;
+    return os;
+}
+
 Produit::Produit(string titre,string descr,int qte,double prix)
     :_id(_idIterator),_titre(titre),_description(descr),_quantitee(max(0,qte)),_prix(abs(prix)){
     _idIterator++;
@@ -27,6 +35,18 @@ double Produit::getPrix() const
     return _prix;
 }
 
+int Produit::getId() const
+{
+    return _id;
+}
+
+bool Produit::equals(Produit p) const
+{
+    if(p.getId()==getId())
+        return true;
+    return false;
+}
+
 int Produit::setQuantitee(int qte)
 {
     _quantitee=max(0,qte);
@@ -34,11 +54,6 @@ int Produit::setQuantitee(int qte)
 
 string Produit::toString() const
 {
-    return getTitre()+ " " +getDescription()+" "+to_string(getQuantitee())+" "+to_string(getPrix());
+    return to_string(getId())+'\t'+ getTitre()+ '\t' +getDescription()+'\t'+to_string(getQuantitee())+'\t'+to_string(getPrix());
 }
 
-ostream &Produit::operator<<(ostream& os)
-{
-    os << toString()<<endl;
-    return os;
-}
